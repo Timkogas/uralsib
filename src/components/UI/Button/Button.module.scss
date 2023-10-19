@@ -1,0 +1,40 @@
+.button {
+    font-size: 24px;
+    line-height: 24px;
+    color: var(--color-primary);
+    width: 193px;
+    height: 70px;
+    display: block;
+
+    border-color: rgb(0, 0, 0, 0);
+    border-width: 2px;
+    border-style: solid;
+
+    border-top-right-radius: 35px;
+    border-bottom-left-radius: 35px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    z-index: 3;
+    position: relative;
+
+    cursor: pointer;
+}
+
+.img {
+    position: relative;
+    width: 193px;
+    height: 100%;
+
+    border-top-right-radius: 35px;
+    border-bottom-left-radius: 35px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

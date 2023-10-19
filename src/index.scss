@@ -1,0 +1,91 @@
+@font-face {
+  font-family: 'Uralsib-Bold';
+  src: url('./assets/fonts/Uralsib_-Bold.otf') format('opentype'),
+    url('./assets/fonts/Uralsib_-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Uralsib-Light';
+  src: url('./assets/fonts/Uralsib_-Light.otf') format('opentype'),
+    url('./assets/fonts/Uralsib_-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Uralsib-Regular';
+  src: url('./assets/fonts/Uralsib_-Regular.otf') format('opentype'),
+    url('./assets/fonts/Uralsib_-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Furore';
+  src: url('./assets/fonts/Furore.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+:root {
+  --color-primary: #FFFFFF;
+  --color-primary-b1: #c3bdc5;
+  --color-primary-b2: #DFD8D8;
+  --color-purple: #3B175C;
+  --color-secondary1: #D827C7;
+  --color-secondary2: #9101E5;
+
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style-type: none;
+}
+
+input,
+button,
+textarea,
+select {
+  background: none repeat scroll 0 0 transparent;
+  border: medium none;
+  border-spacing: 0;
+  margin: 0;
+  text-decoration: none;
+  text-indent: 0;
+}
+
+body {
+  background-color: #361555;
+  color: var(--color-primary);
+  font-family: 'Uralsib-Regular', sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+#bg-1 {
+  background-image: url('./assets/images/dots.png');
+  background-repeat: no-repeat;
+  background-position: 0px 0px;
+  height: 100%;
+}
+
+#bg-2 {
+  background-image: url('./assets/images/light.png');
+  background-repeat: no-repeat;
+  background-position: top right;
+  height: 100vh;
+}
+
+a {
+  text-decoration: inherit;
+  text-decoration: none;
+}
+
