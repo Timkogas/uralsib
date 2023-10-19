@@ -5,7 +5,7 @@
         background-image: url('../../assets/images/falcon-with-disk.png');
         background-repeat: no-repeat;
         background-position: right bottom;
-        background-size: 32% 70%;
+        background-size: 36% 80%;
         height: 100dvh;
 
         @include _1540 {
@@ -18,12 +18,11 @@
         }
 
         @include _900 {
-            background-size: 60% auto, auto 20%;
+            background-size: 70% auto;
         }
     }
 
     &_content {
-
         @include container;
         height: 100%;
         padding-top: 50px;
@@ -31,27 +30,22 @@
 
         display: flex;
         flex-direction: column;
-
-        gap: 20px;
+        justify-content: space-between;
 
         @include _900 {
-            padding-top: 8%;
-            gap: 10px;
+            justify-content: flex-start;
         }
 
         &_title {
-            width: 100%;
-            max-width: 981px;
-            height: 294px;
+            object-fit: contain;
+            height: 147px;
             @include none-select;
-
             margin-bottom: 20px;
 
             @include _900 {
-                object-fit: contain;
-                height: 120px;
+                height: 110px;
                 object-position: left;
-                margin-bottom: 0px;
+                margin-bottom: 10px;
             }
         }
 
@@ -66,6 +60,10 @@
                 font-size: 25px;
                 line-height: 25px;
                 margin-bottom: 10px;
+
+                &:nth-child(1) {
+                    margin-top: 8%;
+                }
             }
         }
 
@@ -89,83 +87,23 @@
                 font-size: 16px;
                 line-height: 16px;
             }
-
             &_number {
                 margin-right: 10px;
             }
         }
 
-        &_btn {
-            max-width: 400px;
-            margin-right: auto;
-        }
-
-
-
-
-        &_disclaimer {
-            position: absolute;
-            bottom: 20px;
-            font-family: 'Uralsib-Light';
-            font-size: 14px;
-            font-weight: 300;
-            line-height: 14px;
-
-            width: 60%;
-
-            color: var(--color-primary-b1);
-
+        &_btns {
+            margin-bottom: 100px;
             @include _900 {
-                width: 95%;
-                bottom: 10px;
-                font-size: 12px;
-                line-height: 12px;
+                margin-bottom: 0px;
+                margin-top: 5%;
             }
         }
-    }
-}
 
-
-.modal_how {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-
-    height: 100%;
-    max-height: 549px;
-
-    &_title {
-        display: block;
-        object-fit: contain;
-        max-width: 478px;
-        width: 90%;
-        height: 74px;
-        @include none-select;
-
-        @include _900 {
-            margin-top: 10px;
+        &_btn {
+            &:nth-child(1) {
+                margin-bottom: 10px;
+            }
         }
-    }
-
-
-    &_text {
-        font-family: 'Uralsib-Regular';
-        font-size: 24px;
-        font-weight: 400;
-        line-height: 24px;
-        width: 85%;
-
-        @include _900 {
-            padding-left: 10px;
-            width: 90%;
-            font-size: 20px;
-            line-height: 20px;
-        }
-
-        &_item {
-            margin-bottom: 10px;
-        }
-
     }
 }

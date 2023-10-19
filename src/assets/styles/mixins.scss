@@ -3,3 +3,38 @@
     margin: 0 auto;
     padding: 10px;
 }
+
+@mixin none-select {
+    user-drag: none;
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@mixin _1540 {
+    @media (max-width: 1540px) {
+        @content;
+    }
+}
+
+@mixin _1250 {
+    @media (max-width: 1250px) {
+        @content;
+    }
+}
+
+@mixin _900 {
+    @media (max-width: 900px) {
+        @content;
+    }
+}
+
+@mixin _530 {
+    @media (max-width: 530px) {
+        @content;
+    }
+}

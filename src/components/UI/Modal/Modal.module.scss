@@ -1,3 +1,5 @@
+@import '/src/assets/styles/mixins.scss';
+
 .Modal {
     position: fixed;
     top: 0;
@@ -27,6 +29,10 @@
     width: 100%;
     margin: 10px;
     position: relative;
+
+    @include _900 {
+        padding: 30px 20px 30px 20px;
+    }
 }
 
 .opened {
@@ -39,4 +45,10 @@
     top: 32px;
     right: 32px;
     cursor: pointer;
+
+    
+    @include _900 {
+        top: 16px;
+        right: 16px;
+    }
 }

@@ -1,0 +1,46 @@
+@import '/src/assets/styles/mixins.scss';
+
+
+.page {
+    &_bg {
+        height: 100dvh;
+    }
+    &_content {
+        @include container;
+        height: 100%;
+        padding-top: 50px;
+        padding-bottom: 20px;
+
+        display: flex;
+        flex-direction: column;
+
+
+        &_test {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+
+            &_img {
+                max-width: 716px;
+                object-fit: contain;
+                width: 100%;
+            }
+
+            &_questions {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                max-width: 840px;
+                width: 100%;
+
+                &_question {
+                    font-family: 'Uralsib-Bold';
+                    font-size: 38px;
+                    font-weight: 700;
+                    line-height: 48px;
+                }
+            }
+        }
+
+    }
+}

@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import StartPage from './pages/Start/StartPage'
-
+import TestPage from './pages/Test/TestPage'
+import ResultPage from './pages/Result/ResultPage'
 
 function App() {
 
@@ -9,9 +10,10 @@ function App() {
       <div id='bg-2'>
         <Routes>
 
-          <Route path='/' element={<StartPage/>} />
-          <Route path='/test' element={<>Тест</>} />
-          <Route path='/result' element={<>Результаты</>} />
+          <Route path='/' element={<StartPage />} />
+          <Route path='/test' element={<TestPage />} />
+          <Route path='/result' element={<ResultPage />} />
+
         </Routes>
       </div>
     </div>
