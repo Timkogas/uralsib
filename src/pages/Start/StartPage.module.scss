@@ -4,7 +4,7 @@
     &_bg {
         background-image: url('../../assets/images/falcon-with-disk.png'), url('../../assets/images/two-disks.png');
         background-repeat: no-repeat, no-repeat;
-        background-position: right bottom, right 40%;
+        background-position: right bottom, right 25%;
         height: 100vh
     }
 
@@ -55,5 +55,38 @@
 
             color: var(--color-primary-b1);
         }
+    }
+}
+
+
+.modal_how {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+
+    height: 100%;
+    max-height: 549px;
+
+    &_title {
+        display: block;
+        object-fit: contain;
+        max-width: 478px;
+        height: 74px;
+    }
+
+    &_text {
+        font-family: 'Uralsib-Regular';
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: 0em;
+        text-align: left;
+        width: 85%;
+
+        &_item {
+            margin-bottom: 10px;
+        }
+
     }
 }
