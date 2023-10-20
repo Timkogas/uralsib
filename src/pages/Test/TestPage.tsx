@@ -2,21 +2,43 @@ import Header from '../../components/Header/Header'
 import styles from './TestPage.module.scss'
 import img from '../../assets/images/test-img.png'
 import CheckBox from '../../components/CheckBox/CheckBox'
-import { useState } from 'react'
+import { useEffect } from 'react'
 import Button from '../../components/UI/Button/Button'
 import { useNavigate } from 'react-router-dom'
+import State from '../../store/State'
+import { observer } from 'mobx-react-lite'
 
-const TestPage = () => {
+const TestPage = observer(() => {
     const navigate = useNavigate()
-    const [answer, setAnswer] = useState<number | null>(null)
+
+    useEffect(() => {
+        State.startGame()
+    }, [])
+
     const onChangeAnswer = (value: number) => {
-        setAnswer(value)
+       
+            State.setCurrentAnswer(value)
+        
     }
 
     const onNext = () => {
-        navigate('/result')
+        if (State.getIsCorrect() !== null) {
+
+            if (State.getCurrentQuestion() === 9) {
+                navigate('/result')
+            }
+
+            State.setCurrentQuestion(State.getCurrentQuestion() + 1)
+            State.setCurrentAnswer(0)
+            State.resetIsCorrect()
+
+        } else {
+            State.setIsCorrect()
+        }
     }
 
+    const question = State.getCurrentQuestions()[State.getCurrentQuestion()]
+    const btnText = State.getCurrentQuestion() === 9 ? 'К результату' : State.getIsCorrect() !== null ? 'Следующий вопрос' : 'Ответить'
     return (
 
         <div className={styles.page_bg}>
@@ -24,12 +46,12 @@ const TestPage = () => {
                 <Header isTest />
 
                 <div className={styles.page_content_test}>
-                    <img src={img} className={styles.page_content_test_img} />
+                    <img src={question?.img} className={styles.page_content_test_img} />
 
                     <div className={styles.page_content_test_questions}>
-                        <h2 className={styles.page_content_test_questions_question}>Какая народная пословица зашифрована на картинке?</h2>
-                        <CheckBox options={[{ text: 'Поспешишь — людей насмешишь', value: 1 }, { text: 'Нет дыма без огня', value: 2 }, { text: 'Тише едешь — дальше будешь', value: 3 }, { text: 'Глаза — зеркало души', value: 4 }]} onChange={onChangeAnswer} selectedValue={answer} />
-                        <Button text='Ответить' big onClick={onNext} />
+                        <h2 className={styles.page_content_test_questions_question}>{question?.question}</h2>
+                        <CheckBox options={question?.answers} onChange={onChangeAnswer} selectedValue={State.getCurrentAnswer()} />
+                        <Button text={btnText} big onClick={onNext} disabled={!State.getCurrentAnswer()} />
                     </div>
                 </div>
 
@@ -37,6 +59,6 @@ const TestPage = () => {
         </div>
 
     )
-}
+})
 
 export default TestPage

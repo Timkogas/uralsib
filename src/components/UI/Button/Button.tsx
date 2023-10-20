@@ -7,7 +7,8 @@ import btnBig from '../../../assets/images/btn-big.png'
 type ButtonProps = {
     className?: string;
     text?: string;
-    big?: boolean
+    big?: boolean;
+    disabled?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
 const Button: FC<ButtonProps> = props => {
@@ -15,13 +16,14 @@ const Button: FC<ButtonProps> = props => {
         className,
         text,
         big,
+        disabled,
         ...otherProps
     } = props
 
 
     return (
         <button
-            className={classNames(styles.button, className, {[styles.button_big]: big})}
+            className={classNames(styles.button, className, {[styles.button_big]: big, [styles.disabled]: disabled})}
             {...otherProps}
         >
             {big ? <img className={styles.img} src={btnBig} /> : <img className={styles.img} src={btnSmall} />}

@@ -1,6 +1,8 @@
 import { FC, memo } from 'react';
 import styles from './CheckBox.module.scss';
 import classNames from 'classnames';
+import State from '../../store/State';
+import { observer } from 'mobx-react-lite';
 
 interface Option {
     text: string;
@@ -13,7 +15,7 @@ interface CheckboxProps {
     onChange?: (value: number) => void;
 }
 
-const CheckBox: FC<CheckboxProps> = ({ options, onChange, selectedValue }) => {
+const CheckBox: FC<CheckboxProps> = observer(({ options, onChange, selectedValue }) => {
 
     const handleOptionChange = (value: number) => {
         onChange?.(value);
@@ -21,10 +23,16 @@ const CheckBox: FC<CheckboxProps> = ({ options, onChange, selectedValue }) => {
 
     return (
         <div className={styles.checkbox_wrapper}>
-            {options.map(({ text, value }) => (
+            {options?.map(({ text, value }) => (
                 <div key={value} className={styles.checkbox_item} onClick={() => handleOptionChange(value)}>
                     <div
-                        className={classNames(styles.checkbox, {[styles.checkbox_active]: value === selectedValue})}
+                        className={classNames(styles.checkbox,
+                            {
+                                [styles.checkbox_active]: value === selectedValue,
+                                [styles.checkbox_wrong]: State.getIsCorrect() === false && State.getIsCorrect() !== null && value === selectedValue,
+                                [styles.checkbox_correct]: State.getIsCorrect() !== null && State.getIsCorrect() && value === selectedValue
+                            }
+                        )}
                     />
                     <p className={styles.option}>
                         {text}
@@ -33,6 +41,6 @@ const CheckBox: FC<CheckboxProps> = ({ options, onChange, selectedValue }) => {
             ))}
         </div>
     );
-};
+});
 
 export default memo(CheckBox);

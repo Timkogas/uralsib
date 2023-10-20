@@ -7,13 +7,15 @@ import { useState } from 'react'
 import Modal from '../UI/Modal/Modal'
 import coin from '../../assets/images/coin.png'
 import classNames from 'classnames'
+import { observer } from 'mobx-react-lite';
+import State from '../../store/State'
 
 interface HeaderProps {
     isTest?: boolean
 }
 
 
-const Header = ({ isTest }: HeaderProps) => {
+const Header = observer(({ isTest }: HeaderProps) => {
     const [modalAbout, setModalAbout] = useState(false)
 
     const onCloseModalAbout = () => {
@@ -24,26 +26,34 @@ const Header = ({ isTest }: HeaderProps) => {
         setModalAbout(true)
     }
 
-
-
     return (
         <> {isTest ?
             <>
                 <div className={styles.header_test}>
                     <div className={styles.header_test_first}>
-                        {[0, 0, 0, 0, 0, 0, 0, 0, 0, 0].map((el, i) => {
-                            return(
-                                <div key={i} className={classNames(styles.slide)}></div>
+                        {State.getCurrentQuestions().map((el, i) => {
+                            console.log(State.getIsCorrect() !== null && State.getIsCorrect() && i === State.getCurrentQuestion())
+                            return (
+                                <div
+                                    key={el.question}
+                                    className={classNames(styles.slide,
+                                        {
+                                            [styles.slide_completed]: i < State.getCurrentQuestion(),
+                                            [styles.slide_wrong]: State.getIsCorrect() === false && State.getIsCorrect() !== null && i === State.getCurrentQuestion(),
+                                            [styles.slide_correct]: State.getIsCorrect() !== null && State.getIsCorrect() && i === State.getCurrentQuestion()
+                                        })
+                                    }
+                                />
                             )
                         })}
                     </div>
 
                     <div className={styles.header_test_second}>
                         <img src={logo} alt='logo' className={styles.logo} />
-                        <p className={styles.header_test_second_progress}>2/10</p>
+                        <p className={styles.header_test_second_progress}> {State.getCurrentQuestion() + 1}/10</p>
                         <div className={styles.header_test_second_coins}>
                             <p className={styles.header_test_second_coins_text}>
-                                600
+                                {State.getCoins()}
                             </p>
                             <img src={coin} alt='logo' />
                         </div>
@@ -54,7 +64,7 @@ const Header = ({ isTest }: HeaderProps) => {
             <>
                 <Modal isOpen={modalAbout} classNameContent={styles.modal_about} onClose={onCloseModalAbout}>
                     <img className={styles.modal_about_title} src={about} />
-                    <img className={styles.modal_about_card} src={card}/>
+                    <img className={styles.modal_about_card} src={card} />
                     <ul className={styles.modal_about_text}>
                         <li className={styles.modal_about_text_item}>
                             До 13% годовых на остаток для новых клиентов в первые 2 месяца
@@ -83,6 +93,6 @@ const Header = ({ isTest }: HeaderProps) => {
         </>
 
     )
-}
+})
 
 export default Header
