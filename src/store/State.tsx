@@ -153,7 +153,11 @@ class State {
         this._currentAnswer = 0
         this._coins = 0
         this._isCorrect = null
-        
+
+        if (this._usedQuestions.length === this._usedQuestions.length) {
+            this._usedQuestions = []
+        }
+
         const unusedQuestions = this._questions.filter(question => !this._usedQuestions.includes(question));
         const randomQuestions = unusedQuestions.sort(() => Math.random() - 0.5).slice(0, 10);
         this._currentQuestions = randomQuestions;

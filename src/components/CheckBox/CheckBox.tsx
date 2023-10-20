@@ -24,13 +24,20 @@ const CheckBox: FC<CheckboxProps> = observer(({ options, onChange, selectedValue
     return (
         <div className={styles.checkbox_wrapper}>
             {options?.map(({ text, value }) => (
-                <div key={value} className={styles.checkbox_item} onClick={() => handleOptionChange(value)}>
+                <div
+                    key={value}
+                    className={classNames(
+                        styles.checkbox_item,
+                        State.getIsCorrect() !== null && value !== selectedValue ? styles.checkbox_item_active : ''
+                    )}
+                    onClick={() => handleOptionChange(value)}
+                >
                     <div
                         className={classNames(styles.checkbox,
                             {
                                 [styles.checkbox_active]: value === selectedValue,
                                 [styles.checkbox_wrong]: State.getIsCorrect() === false && State.getIsCorrect() !== null && value === selectedValue,
-                                [styles.checkbox_correct]: State.getIsCorrect() !== null && State.getIsCorrect() && value === selectedValue
+                                [styles.checkbox_correct]: State.getIsCorrect() !== null && State.getIsCorrect() && value === selectedValue,
                             }
                         )}
                     />
