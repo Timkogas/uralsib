@@ -1,3 +1,5 @@
+@import '/src/assets/styles/mixins.scss';
+
 .checkbox_wrapper {
     display: flex;
     flex-direction: column;
@@ -14,8 +16,22 @@
     border-radius: 50%;
     z-index: 2;
     position: relative;
+    flex: 0 0 50px;
 
     cursor: pointer;
+
+    @include _900 {
+        width: 30px;
+        height: 30px;
+        flex: 0 0 30px;
+    }
+
+    @include _360 {
+        width: 25px;
+        height: 25px;
+        flex: 0 0 25px;
+    }
+
 
     &::before {
         content: "";
@@ -30,6 +46,14 @@
             linear-gradient(#fff 0 0);
         -webkit-mask-composite: xor;
         mask-composite: exclude;
+
+        @include _900 {
+            padding: 5px;
+        }
+
+        @include _360 {
+            padding: 4px;
+        }
     }
 
     &_active {
@@ -45,6 +69,17 @@
             transform: translate(-50%, -50%);
             border-radius: 50%;
             background: linear-gradient(234.18deg, #6F3EC9 6.01%, #AD7CE8 18.2%, #6F3EC9 32%, #6F3EC9 42%, #AD7CE8 58.07%, #AD7CE8 67.18%, #6F3EC9 87.89%);
+
+
+            @include _900 {
+                width: 10px;
+                height: 10px;
+            }
+
+            @include _360 {
+                width: 9px;
+                height: 9px;
+            }
         }
     }
 
@@ -65,6 +100,15 @@
             transform: translate(-50%, -50%);
             border-radius: 50%;
             background: linear-gradient(234.18deg, #1EC802 6.01%, #9CF48D 18.2%, #1EC802 32%, #1EC802 42%, #9CF48D 58.07%, #9CF48D 67.18%, #1EC802 87.89%);
+            @include _900 {
+                width: 10px;
+                height: 10px;
+            }
+
+            @include _360 {
+                width: 9px;
+                height: 9px;
+            }
         }
     }
 
@@ -85,6 +129,15 @@
             transform: translate(-50%, -50%);
             border-radius: 50%;
             background: linear-gradient(234.18deg, #FF0000 6.01%, #FF9D9D 18.2%, #FF0000 32%, #FF0000 42%, #FF9D9D 58.07%, #FF9D9D 67.18%, #FF0000 87.89%);
+            @include _900 {
+                width: 10px;
+                height: 10px;
+            }
+
+            @include _360 {
+                width: 9px;
+                height: 9px;
+            }
         }
     }
 
@@ -92,8 +145,6 @@
         display: flex;
         gap: 20px;
         align-items: center;
-
-
     }
 }
 
@@ -107,4 +158,14 @@
     align-items: center;
     gap: 5px;
     cursor: pointer;
+
+    @include _900 {
+        font-size: 20px;
+        line-height: 20px;
+    }
+
+    @include _360 {
+        font-size: 16px;
+        line-height: 16px;
+    }
 }

@@ -22,10 +22,9 @@ const CheckBox: FC<CheckboxProps> = ({ options, onChange, selectedValue }) => {
     return (
         <div className={styles.checkbox_wrapper}>
             {options.map(({ text, value }) => (
-                <div key={value} className={styles.checkbox_item}>
+                <div key={value} className={styles.checkbox_item} onClick={() => handleOptionChange(value)}>
                     <div
                         className={classNames(styles.checkbox, {[styles.checkbox_active]: value === selectedValue})}
-                        onClick={() => handleOptionChange(value)}
                     />
                     <p className={styles.option}>
                         {text}

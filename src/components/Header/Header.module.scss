@@ -11,6 +11,14 @@
         gap: 15px;
 
         margin-bottom: 20px;
+
+        @include _1540 {
+            gap: 10px;
+        }
+
+        @include _900 {
+            gap: 5px;
+        }
     }
 
     &_second {
@@ -23,6 +31,12 @@
             font-size: 32px;
             font-weight: 400;
             line-height: 35px;
+
+            @include _900 {
+                font-size: 24px;
+                line-height: 29px;
+                margin-top: 10px;
+            }
         }
 
         &_coins {
@@ -30,11 +44,24 @@
             align-items: center;
             gap: 20px;
 
+            @include _900 {
+                gap: 10px;
+                & img {
+                    object-fit: contain;
+                    height: 30px;
+                }
+            }
+
             &_text {
                 font-size: 32px;
                 font-weight: 400;
                 margin-top: 10px;
                 line-height: 35px;
+                @include _900 {
+                    font-size: 24px;
+                    line-height: 29px;
+
+                }
             }
         }
     }

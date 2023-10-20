@@ -28,7 +28,7 @@ const TestPage = () => {
 
                     <div className={styles.page_content_test_questions}>
                         <h2 className={styles.page_content_test_questions_question}>Какая народная пословица зашифрована на картинке?</h2>
-                        <CheckBox options={[{ text: 'Вопрос', value: 1 }, { text: 'Вопрос 2', value: 2 }, { text: 'Вопрос 3', value: 3 }, { text: 'Вопрос 4', value: 4 }]} onChange={onChangeAnswer} selectedValue={answer} />
+                        <CheckBox options={[{ text: 'Поспешишь — людей насмешишь', value: 1 }, { text: 'Нет дыма без огня', value: 2 }, { text: 'Тише едешь — дальше будешь', value: 3 }, { text: 'Глаза — зеркало души', value: 4 }]} onChange={onChangeAnswer} selectedValue={answer} />
                         <Button text='Ответить' big onClick={onNext} />
                     </div>
                 </div>
