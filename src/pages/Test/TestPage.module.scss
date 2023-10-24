@@ -2,7 +2,8 @@
 
 .page {
     &_bg {
-        height: 100dvh;
+        min-height: 100vh;
+        height: 100%;
     }
 
     &_content {
@@ -15,7 +16,7 @@
         flex-direction: column;
 
         @include _900 {
-            padding-top: 20px;
+            padding-top: 30px;
         }
 
 
@@ -47,10 +48,11 @@
                 }
 
                 @include _900 {
-                    height: 20vh;
                     max-width: auto;
                     margin: 0 auto;
-                    width: 32vh;
+                    flex-basis: 40%;
+                    height: 320px;
+                    width: 50wv;
                 }
             }
 
@@ -64,7 +66,7 @@
                 flex-basis: 50%;
 
                 @include _900 {
-                    gap: 5%;
+                    justify-content: flex-start
                 }
 
                 &_question {
@@ -85,14 +87,10 @@
                     }
 
                     @include _900 {
-                        font-size: 24px;
-                        line-height: 24px;
+                        font-size: 22px;
+                        line-height: 22px;
                     }
 
-                    @include _360 {
-                        font-size: 18px;
-                        line-height: 18px;
-                    }
 
                 }
             }
@@ -106,7 +104,7 @@
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100dvh;
+    height: 200vh;
     pointer-events: none;
     overflow: hidden;
 
@@ -123,10 +121,10 @@
 @keyframes fall {
 
     0% {
-        transform: translateY(-35vh);
+        transform: translateY(-55vh);
     }
 
     100% {
-        transform: translateY(150vh) rotate(360deg);
+        transform: translateY(200vh) rotate(360deg);
     }
 }

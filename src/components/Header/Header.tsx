@@ -1,5 +1,6 @@
 import styles from './Header.module.scss'
-import logo from '../../assets/images/logo.png'
+import logo from '../../assets/images/logo.svg'
+import logoSmall from '../../assets/images/logo-small.svg'
 import Button from '../UI/Button/Button'
 import about from '../../assets/images/modal-about-card.png'
 import card from '../../assets/images/modal-card.png'
@@ -32,7 +33,6 @@ const Header = observer(({ isTest }: HeaderProps) => {
                 <div className={styles.header_test}>
                     <div className={styles.header_test_first}>
                         {State.getCurrentQuestions().map((el, i) => {
-                            console.log(State.getIsCorrect() !== null && State.getIsCorrect() && i === State.getCurrentQuestion())
                             return (
                                 <div
                                     key={el.question}
@@ -49,7 +49,7 @@ const Header = observer(({ isTest }: HeaderProps) => {
                     </div>
 
                     <div className={styles.header_test_second}>
-                        <img src={logo} alt='logo' className={styles.logo} />
+                        <img src={logoSmall} alt='logo' className={styles.logo} />
                         <p className={styles.header_test_second_progress}> {State.getCurrentQuestion() + 1}/10</p>
                         <div className={styles.header_test_second_coins}>
                             <p className={styles.header_test_second_coins_text}>

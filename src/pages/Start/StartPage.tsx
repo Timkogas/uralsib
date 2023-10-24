@@ -4,31 +4,14 @@ import title from '../../assets/images/start-page-title.png'
 import how from '../../assets/images/modal-how-play.png'
 import Button from '../../components/UI/Button/Button'
 import Modal from '../../components/UI/Modal/Modal'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
-
-function getWindowDimensions() {
-    const { innerWidth: width, innerHeight: height } = window;
-    return {
-        width,
-        height
-    };
-}
+import useWindowDimensions from '../../helpers'
 
 const StartPage = () => {
 
     const [modalHow, setModalHow] = useState(false)
-    const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
-
-    useEffect(() => {
-        function handleResize() {
-            setWindowDimensions(getWindowDimensions());
-        }
-
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
+    const { width } = useWindowDimensions();
 
     const onCloseModalHow = () => {
         setModalHow(false)
@@ -60,7 +43,7 @@ const StartPage = () => {
                 </ol>
 
                 <Link to={'/test'}>
-                    <Button text='Все ясно' big className={styles.page_content_btn} onClick={onCloseModalHow} />
+                    <Button text='Все ясно' big className={styles.btn} onClick={onCloseModalHow} />
 
                 </Link>
             </Modal>
@@ -75,23 +58,46 @@ const StartPage = () => {
                 <div>
                     <h2 className={styles.page_content_subtitle}>Человек или нейросеть — кто кого?</h2>
                     <p className={styles.page_content_text}>
-                        Отгадайте, что изобразила нейросеть и получите
+                        {width > 900 ?
+                            <>
+                                Отгадайте, что изобразила нейросеть и получите<br />
 
-                        до <span className={styles.page_content_text_number}>1</span>000 бонусных рублей на карту «Прибыль».
-                        А ещё высокий доход — до 13% годовых на остаток*!
+                                до <span className={styles.page_content_text_number}>1</span>000 бонусных рублей на карту «Прибыль».<br />
+                                А ещё высокий доход — до 13% годовых на остаток*!<br />
+                            </>
+                            :
+                            <>
+                                Отгадайте, что изобразила нейросеть 
+                                и получите до <span className={styles.page_content_text_number}>1</span>000 бонусных рублей на карту
+                                «Прибыль». А ещё высокий доход — 
+                                до 13% годовых на остаток*!
+                            </>}
                     </p>
                 </div>
-                <Button text='Играть' big={windowDimensions.width < 900} className={styles.page_content_btn} onClick={onOpenModalHow} />
+                <Button text='Играть' big={width < 900} className={styles.page_content_btn} onClick={onOpenModalHow} />
 
 
                 <span className={styles.page_content_disclaimer}>
-                    Общий срок проведения акции с 1 сентября 2023 года по 31 декабря 2023 года. Информация о правилах участия в акции,
+                    {width > 900 ?
+                        <>
+                            Общий срок проведения акции с 1 сентября 2023 года по 31 декабря 2023 года. Информация о правилах участия в акции,<br />
 
-                    количестве призов, сроках проведения акции, условиях и тарифах по дебетовой карте «Прибыль» размещена на сайте <a href='https://www.uralsib.ru/' target='_blank'>uralsib.ru</a>.
+                            количестве призов, сроках проведения акции, условиях и тарифах по дебетовой карте «Прибыль» размещена на сайте <a href='https://www.uralsib.ru/' target='_blank'>uralsib.ru</a>.<br />
 
-                    Реклама. ПАО «Банк Уралсиб». Генеральная лицензия банка России № 30, выдана 10.09.2015 г.
+                            Реклама. ПАО «Банк Уралсиб». Генеральная лицензия банка России № 30, выдана 10.09.2015 г.<br />
 
-                    *для новых клиентов в первые 2 месяца
+                            *для новых клиентов в первые 2 месяца<br />
+                        </>
+                        :
+                        <>
+                            Общий срок проведения акции с 1 сентября 2023 года по 31 декабря 2023 года.
+                            Информация о правилах участия в акции, количестве призов, сроках проведения 
+                            акции, условиях и тарифах по дебетовой карте «Прибыль» размещена на сайте 
+                            <a href='https://www.uralsib.ru/' target='_blank'>uralsib.ru</a>. 
+                            Реклама. ПАО «Банк Уралсиб». Генеральная лицензия банка России № 30, выдана 
+                            10.09.2015 г.
+                            *для новых клиентов в первые 2 месяца
+                        </>}
                 </span>
 
             </div>

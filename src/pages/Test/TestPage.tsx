@@ -54,6 +54,7 @@ const TestPage = observer(() => {
     }, [])
 
     const onChangeAnswer = (value: number) => {
+        if (State.getIsCorrect() !== null) return
         State.setCurrentAnswer(value)
     }
 

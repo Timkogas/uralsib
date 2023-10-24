@@ -6,7 +6,8 @@
         background-repeat: no-repeat;
         background-position: right bottom;
         background-size: 36% 80%;
-        height: 100dvh;
+        min-height: 100vh;
+        height: 100%;
 
         @include _1540 {
             background-size: 36% 70%;
@@ -34,6 +35,14 @@
 
         @include _900 {
             justify-content: flex-start;
+            padding-top: 20px;
+        }
+
+        &_block {
+            margin-top: 70px;
+            @include _900 {
+                margin-top: 10px;
+            }
         }
 
         &_title {
@@ -47,6 +56,12 @@
                 object-position: left;
                 margin-bottom: 10px;
             }
+
+            @include _360 {
+                height: 90px;
+                object-position: left;
+                margin-bottom: 10px;
+            }
         }
 
         &_subtitle {
@@ -54,12 +69,12 @@
             font-size: 40px;
             font-weight: 700;
             line-height: 40px;
-            margin-bottom: 20px;
+            margin-bottom: 50px;
 
             @include _900 {
                 font-size: 25px;
                 line-height: 25px;
-                margin-bottom: 10px;
+                margin-bottom: 30px;
 
                 &:nth-child(1) {
                     margin-top: 8%;
@@ -68,7 +83,7 @@
         }
 
         &_text {
-            font-family: 'Uralsib-Regular';
+            font-family: 'Uralsib-Light';
             font-size: 24px;
             font-weight: 400;
             line-height: 24px;
@@ -93,10 +108,12 @@
         }
 
         &_btns {
-            margin-bottom: 100px;
+            margin-top: 50px;
+
             @include _900 {
                 margin-bottom: 0px;
                 margin-top: 5%;
+                margin-bottom: 300px;
             }
         }
 
