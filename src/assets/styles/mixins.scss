@@ -38,3 +38,16 @@
         @content;
     }
 }
+
+
+@mixin _900_910 {
+    @media (min-width: 900px) and ( max-height: 910px) {
+        @content;
+    }
+}
+
+@mixin _900_750 {
+    @media (min-width: 900px) and ( max-height: 750px) {
+        @content;
+    }
+}

@@ -16,23 +16,24 @@ import { observer } from 'mobx-react-lite'
 const TestPage = observer(() => {
     const navigate = useNavigate()
 
-    const [coins, setCoins] = useState<{ id: number, left: number, coin: number, deg: number, size: number}[]>([]);
+    const [coins, setCoins] = useState<{ id: number, left: number, coin: number, deg: number, size: number, dur: number }[]>([]);
 
     const counterRef = useRef(0);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const timeoutsRef = useRef<any[]>([]);
 
     const addCoin = () => {
-        if (counterRef.current >= 70) return;
+        if (counterRef.current >= 70) return
 
         const randomLeft = Math.random() * window.innerWidth - 30;
         const randomSize = Math.random() * (1 - 0.5) + 0.5;
         const randomDeg = Math.random() * 360;
         const randomCoin = Math.floor(Math.random() * 3) + 1;
+        const randomDuration = Math.floor(Math.random() * (6 - 3 + 1)) + 3
 
         setCoins(prevCoins => [
             ...prevCoins,
-            { id: Date.now(), left: randomLeft, size: randomSize, deg: randomDeg, coin: randomCoin }
+            { id: Date.now(), left: randomLeft, size: randomSize, deg: randomDeg, coin: randomCoin, dur: randomDuration }
         ]);
 
         counterRef.current++;
@@ -84,7 +85,7 @@ const TestPage = observer(() => {
     }
 
     const question = State.getCurrentQuestions()[State.getCurrentQuestion()]
-    const btnText = State.getCurrentQuestion() === 9 ? 'К результату' : State.getIsCorrect() !== null ? 'Следующий вопрос' : 'Ответить'
+    const btnText = State.getCurrentQuestion() === 9 && State.getIsCorrect() !== null ? 'К результату' : State.getIsCorrect() !== null ? 'Следующий вопрос' : 'Ответить'
     return (
 
         <div className={styles.page_bg}>
@@ -92,29 +93,35 @@ const TestPage = observer(() => {
                 <Header isTest />
 
                 <div className={styles.page_content_test}>
-                    <img src={question?.img} className={styles.page_content_test_img} />
+                    <div className={styles.page_content_test_img_wrapper}>
+                        <img src={question?.img} className={styles.page_content_test_img} />
+                    </div>
 
                     <div className={styles.page_content_test_questions}>
                         <h2 className={styles.page_content_test_questions_question}>{question?.question}</h2>
                         <CheckBox options={question?.answers} onChange={onChangeAnswer} selectedValue={State.getCurrentAnswer()} />
-                        <Button text={btnText} big onClick={onNext} disabled={!State.getCurrentAnswer()} />
+                        <Button text={btnText} big onClick={onNext} disabled={!State.getCurrentAnswer()} className={styles.page_content_test_questions_question_btn} />
                     </div>
                 </div>
 
             </div>
 
             <div className={styles.coin_rain_container} style={{ display: State.getIsCorrect() ? 'block' : 'none' }}>
-                {coins.map(coin => (
-                    <img
-                        key={coin.id}
-                        className={styles.coin}
-                        src={coin.coin === 1 ? coin1 : coin.coin === 2 ? coin2 : coin3}
-                        style={{
-                            left: `${coin.left}px`,
-                            transform: `scale(${coin.size}) rotate(${coin.deg}deg)`
-                        }}
-                    />
-                ))}
+                {coins.map(coin => {
+                    return (
+                        <img
+                            key={coin.id}
+                            className={styles.coin}
+                            src={coin.coin === 1 ? coin1 : coin.coin === 2 ? coin2 : coin3}
+                            style={{
+                                top: '-55vh',
+                                animationDuration: `${coin.dur}s`,
+                                left: `${coin.left}px`,
+                                transform: `scale(${coin.size}) rotate(${coin.deg}deg)`
+                            }}
+                        />
+                    );
+                })}
             </div>
         </div>
 

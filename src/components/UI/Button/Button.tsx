@@ -3,12 +3,15 @@ import styles from './Button.module.scss'
 import classNames from 'classnames'
 import btnSmall from '../../../assets/images/btn-small.png'
 import btnBig from '../../../assets/images/btn-big.png'
+import btnMedium from '../../../assets/images/btn-medium.png'
 
 type ButtonProps = {
     className?: string;
     text?: string;
     big?: boolean;
+    medium?: boolean;
     disabled?: boolean;
+    classNameSprite?: string;
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
 const Button: FC<ButtonProps> = props => {
@@ -17,16 +20,17 @@ const Button: FC<ButtonProps> = props => {
         text,
         big,
         disabled,
+        medium,
         ...otherProps
     } = props
 
 
     return (
         <button
-            className={classNames(styles.button, className, {[styles.button_big]: big, [styles.disabled]: disabled})}
+            className={classNames(styles.button, className, { [styles.button_big]: big, [styles.disabled]: disabled,  [styles.button_medium]: medium, })}
             {...otherProps}
         >
-            {big ? <img className={styles.img} src={btnBig} /> : <img className={styles.img} src={btnSmall} />}
+            {big ? <img className={styles.img} src={btnBig} /> : medium ?  <img className={styles.img} src={btnMedium}/>  : <img className={styles.img} src={btnSmall} />}
             <span className={styles.text}>{text}</span>
         </button>
     )

@@ -21,7 +21,7 @@
 }
 
 .content {
-    padding: 50px 30px 70px 30px;
+    padding: min(4dvh, 5vw) min(3dvh, 4vw) min(5dvh, 6vw) min(3dvh, 4vw);
     border-radius: 12px;
     background: #BDBDBD4D;
     box-shadow: 4px 4px 20px 0px #FFFFFF4D inset;
@@ -39,17 +39,4 @@
 .opened {
     opacity: 1;
     pointer-events: auto;
-}
-
-.icon {
-    position: absolute;
-    top: 32px;
-    right: 32px;
-    cursor: pointer;
-
-    
-    @include _900 {
-        top: 16px;
-        right: 16px;
-    }
 }

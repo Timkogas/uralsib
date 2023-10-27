@@ -1,7 +1,6 @@
 import { type FC, type ReactNode, useEffect, useCallback } from 'react'
 import styles from './Modal.module.scss'
 import classNames from 'classnames'
-import CloseIcon from '../../../assets/images/close.svg'
 
 interface ModalProps {
   className?: string
@@ -57,7 +56,6 @@ const Modal: FC<ModalProps> = (props: ModalProps) => {
           onClick={onContentClick}
         >
           {children}
-          <img src={CloseIcon} className={styles.icon} onClick={closeHandler}/>
         </div>
       </div>
     </div>

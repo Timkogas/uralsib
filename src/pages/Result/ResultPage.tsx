@@ -18,6 +18,7 @@ import { Link } from 'react-router-dom'
 import { observer } from 'mobx-react-lite'
 import State from '../../store/State'
 import { useState, useEffect, useMemo  } from 'react'
+import classNames from 'classnames'
 
 const ResultPage = observer(() => {
 
@@ -57,7 +58,7 @@ const ResultPage = observer(() => {
         if (coins === 0) {
             setText('Если машины восстанут, вам точно несдобровать. Вы правильно ответили всего на 0 вопросов – мы уверены, вы можете лучше. Попробуйте ещё раз!')
         } else if (coins === 100) {
-            setText('Если машины восстанут, вам точно несдобровать. Вы правильно ответили всего на 1 вопросов – мы уверены, вы можете лучше. Попробуйте ещё раз!')
+            setText('Если машины восстанут, вам точно несдобровать. Вы правильно ответили всего на 1 вопрос – мы уверены, вы можете лучше. Попробуйте ещё раз!')
         } else if (coins >= 200 && coins <= 400) {
             setText(`Неплохо, вы можете забрать ${coins} бонусных рублей – но советуем попробовать ещё. Напоминаем, разгадав все картинки, вы получите 1000 бонусных рублей на дебетовую карту «Прибыль»! Сыграем ещё раз?`)
         } else if (coins >= 500 && coins <= 700) {
@@ -78,7 +79,7 @@ const ResultPage = observer(() => {
                 <div className={styles.page_content_block}>
                     <h2 className={styles.page_content_subtitle}>Вы заработали</h2>
                     <img className={styles.page_content_title} src={resultImage} />
-                    <h2 className={styles.page_content_subtitle}>бонусных рублей</h2>
+                    <h2 className={classNames(styles.page_content_subtitle, styles.page_content_subtitle_second)}>бонусных рублей</h2>
                     <p className={styles.page_content_text}>
                         {text}
                     </p>

@@ -5,22 +5,25 @@
         background-image: url('../../assets/images/falcon-with-disk.png');
         background-repeat: no-repeat;
         background-position: right bottom;
-        background-size: 32% 70%;
-        min-height: 100vh;
+        background-size: 35% 78%;
+        max-height: 100dvh;
+        min-height: 100dvh;
         height: 100%;
+
 
         @include _1540 {
             background-size: 36% 70%;
         }
 
         @include _1250 {
-            background-size: 50% auto;
+            background-size: auto 50%;
             background-position: right bottom;
         }
 
         @include _900 {
-            background-size: 60% auto, auto 20%;
+            background-size: 50% auto, auto 20%;
         }
+
         position: relative;
     }
 
@@ -28,85 +31,57 @@
 
         @include container;
         height: 100%;
-        padding-top: 50px;
-        padding-bottom: 20px;
+        padding-top: min(2.5vw, 4.5dvh);
 
         display: flex;
         flex-direction: column;
-
-        gap: 20px;
+        justify-content: space-between;
 
         @include _900 {
-            padding-top: 10px;
+            padding-top: min(8.5vw, 8.5dvh);
         }
 
         &_title {
             width: 100%;
             max-width: 981px;
-            height: 294px;
+            object-fit: contain;
+            object-position: left;
+            height: min(25vw, 32dvh);
+            max-height: 294px;
             @include none-select;
 
-            margin-bottom: 50px;
-
-            @include _900 {
-                object-fit: contain;
-                height: 120px;
-                object-position: left;
-                margin-bottom: 30px;
-                margin-top: 30px;
-            }
+            margin-top: 4dvh;
+            margin-bottom: 6dvh;
         }
 
         &_subtitle {
             font-family: 'Uralsib-Bold';
-            font-size: 40px;
+            font-size: min(5.2dvh, 5vw, 40px);
             font-weight: 700;
-            line-height: 40px;
+            line-height: min(5.2dvh, 5vw, 40px);
             margin-bottom: 20px;
-
-            @include _900 {
-                font-size: 25px;
-                line-height: 25px;
-                margin-bottom: 20px;
-            }
-
         }
 
         &_text {
             font-family: 'Uralsib-Light';
-            font-size: 24px;
+            font-size: min(3.2dvh, 4vw, 24px);
             font-weight: 400;
-            line-height: 24px;
-            width: 45%;
-
-            @include _1540 {
-                width: 50%;
-            }
-
-            @include _1250 {
-                width: 60%;
-            }
-
-            @include _900 {
-                width: 100%;
-                font-size: 16px;
-                line-height: 16px;
-            }
+            line-height: min(3.2dvh, 4vw, 24px);
+            width: 100%;
 
             &_number {
-                margin-right: 10px;
+                margin-right: 5px;
             }
         }
 
         &_btn {
             max-width: 400px;
             margin-right: auto;
+            position: relative;
+            z-index: 2;
 
-            margin-top: 40px;
-            @include _900 {
-                margin-top: 20px;
-                margin-bottom: 230px;
-            }
+
+            margin-top: min(4.2dvh, 7vw);
         }
 
 
@@ -120,17 +95,26 @@
             font-weight: 300;
             line-height: 14px;
 
-            width: 60%;
+            width: 90%;
 
             color: var(--color-primary-b1);
 
-            @include _900 {
-                position: absolute;
-                width: 85%;
-                padding-right: 35px;
-                bottom: 10px;
+            @include _900_910 {
                 font-size: 12px;
                 line-height: 12px;
+                width: 85%;
+            }
+
+            @include _900 {
+                font-size: 12px;
+                line-height: 12px;
+                width: 85%;
+            }
+
+            @include _360 {
+                font-size: 10px;
+                line-height: 10px;
+                width: 85%;
             }
         }
     }
@@ -142,9 +126,6 @@
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
-
-    height: 100%;
-    max-height: 549px;
 
     @include _900 {
         max-height: auto;
@@ -158,30 +139,27 @@
         height: 74px;
         @include none-select;
 
-        @include _900 {
-            margin-top: 10px;
-            margin-bottom: 20px;
-        }
+        margin-bottom: min(2.5vw, 4.5dvh);
     }
 
 
     &_text {
         font-family: 'Uralsib-Regular';
-        font-size: 24px;
+        font-size: min(3.2dvh, 4vw, 24px);
         font-weight: 400;
-        line-height: 24px;
+        line-height: min(3.2dvh, 4vw, 24px);
         width: 85%;
 
-        @include _900 {
-            padding-left: 10px;
-            width: 90%;
-            font-size: 18px;
-            line-height: 18px;
-        }
-
         &_item {
-            margin-bottom: 10px;
+            margin-bottom: min(0.5vw, 0.5dvh);
         }
 
+    }
+
+    &_link {
+        margin-top: min(2.5vw, 4.5dvh);
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
