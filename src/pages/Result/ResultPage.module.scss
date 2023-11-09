@@ -21,7 +21,7 @@
         }
 
         @include _900 {
-            background-size: 40% auto, auto 20%;
+            background-size: 34% auto, auto 20%;
         }
     }
 
@@ -53,6 +53,9 @@
             max-height: 147px;
             @include none-select;
             margin-bottom: min(2.2dvh, 2vw, 20px);
+            @include _900 {
+                height: min(20vw, 20dvh);
+            }
         }
 
         &_subtitle {
@@ -71,7 +74,7 @@
             font-family: 'Uralsib-Regular';
             font-size: min(3.1vh, 4vw, 24px);
             font-weight: 400;
-            line-height: min(3.1vh, 4vw, 24px);
+            line-height: min(3.7dvh, 4.8vw, 24px);
             width: 40vw;
 
             @include _900_910 {

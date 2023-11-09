@@ -14,6 +14,11 @@
     -ms-user-select: none;
     user-select: none;
 }
+@mixin _1930 {
+    @media (min-width: 1930px) {
+        @content;
+    }
+}
 
 @mixin _1540 {
     @media (max-width: 1540px) {

@@ -23,13 +23,13 @@ const TestPage = observer(() => {
     const timeoutsRef = useRef<any[]>([]);
 
     const addCoin = () => {
-        if (counterRef.current >= 70) return
+        if (counterRef.current >= 25) return
 
         const randomLeft = Math.random() * window.innerWidth - 30;
         const randomSize = Math.random() * (1 - 0.5) + 0.5;
         const randomDeg = Math.random() * 360;
         const randomCoin = Math.floor(Math.random() * 3) + 1;
-        const randomDuration = Math.floor(Math.random() * (6 - 3 + 1)) + 3
+        const randomDuration = Math.floor(Math.random() * (5 - 3 + 1)) + 3
 
         setCoins(prevCoins => [
             ...prevCoins,
@@ -39,7 +39,7 @@ const TestPage = observer(() => {
         counterRef.current++;
 
 
-        timeoutsRef.current.push(setTimeout(addCoin, 40));
+        timeoutsRef.current.push(setTimeout(addCoin, 30));
     }
 
     const clearAllTimeouts = () => {
@@ -69,9 +69,7 @@ const TestPage = observer(() => {
 
             State.setCurrentQuestion(State.getCurrentQuestion() + 1)
             State.setCurrentAnswer(0)
-            if (State.getIsCorrect()) {
-                State.setCoins(State.getCoins() + 100)
-            }
+
             State.resetIsCorrect()
 
             setCoins([])
@@ -81,10 +79,25 @@ const TestPage = observer(() => {
         } else {
             State.setIsCorrect()
             addCoin()
+            timeoutsRef.current.push(setTimeout(() => {
+                if (State.getCurrentQuestion() === 9) {
+                    navigate('/result')
+                }
+
+                State.setCurrentQuestion(State.getCurrentQuestion() + 1)
+                State.setCurrentAnswer(0)
+
+                State.resetIsCorrect()
+
+                setCoins([])
+                counterRef.current = 0
+                clearAllTimeouts()
+            }, 3000))
         }
     }
 
     const question = State.getCurrentQuestions()[State.getCurrentQuestion()]
+    const nextQuestion = State.getCurrentQuestion() === 9 ? { img: '' } : State.getCurrentQuestions()[State.getCurrentQuestion() + 1]
     const btnText = State.getCurrentQuestion() === 9 && State.getIsCorrect() !== null ? 'К результату' : State.getIsCorrect() !== null ? 'Следующий вопрос' : 'Ответить'
     return (
 
@@ -94,11 +107,12 @@ const TestPage = observer(() => {
 
                 <div className={styles.page_content_test}>
                     <div className={styles.page_content_test_img_wrapper}>
-                        <img src={question?.img} className={styles.page_content_test_img} />
+                        <img src={question?.img} className={styles.page_content_test_img} rel='preload' />
+                        <img src={nextQuestion?.img} style={{ display: 'none' }} rel='preload' />
                     </div>
 
                     <div className={styles.page_content_test_questions}>
-                        <h2 className={styles.page_content_test_questions_question}>{question?.question}</h2>
+                        <h2 className={styles.page_content_test_questions_question}><div dangerouslySetInnerHTML={{ __html: question?.question }} /></h2>
                         <CheckBox options={question?.answers} onChange={onChangeAnswer} selectedValue={State.getCurrentAnswer()} />
                         <Button text={btnText} big onClick={onNext} disabled={!State.getCurrentAnswer()} className={styles.page_content_test_questions_question_btn} />
                     </div>

@@ -119,6 +119,9 @@
     animation-name: fall;
     animation-iteration-count: 1;
     z-index: 1000;
+    @include _900 {
+        width: 30px;
+    }
 }
 
 @keyframes fall {

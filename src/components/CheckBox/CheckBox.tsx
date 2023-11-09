@@ -42,7 +42,7 @@ const CheckBox: FC<CheckboxProps> = observer(({ options, onChange, selectedValue
                         )}
                     />
                     <p className={styles.option}>
-                        {text}
+                        <div dangerouslySetInnerHTML={{ __html: text }} />
                     </p>
                 </div>
             ))}

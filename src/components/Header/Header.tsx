@@ -71,21 +71,21 @@ const Header = observer(({ isTest }: HeaderProps) => {
                     <img className={styles.modal_about_card} src={card} />
                     <ul className={styles.modal_about_text}>
                         <li className={styles.modal_about_text_item}>
-                            До 13% годовых на остаток для новых клиентов  <br/> в первые 2 месяца
+                            <b>До&nbsp;13% годовых</b> на&nbsp;остаток для новых клиентов в&nbsp;первые 2&nbsp;месяца
                         </li>
                         <li className={styles.modal_about_text_item}>
-                            До 3% кешбэк на покупки
+                            <b>До&nbsp;3% кешбэк</b> на&nbsp;покупки
                         </li>
                         <li className={styles.modal_about_text_item}>
-                            До 30% кешбэк у партнёров
+                            <b>До&nbsp;30% кешбэк</b> у&nbsp;партнёров
                         </li>
                         <li className={styles.modal_about_text_item}>
-                            Бесплатное обслуживание на простых условиях
+                            <b> Бесплатное обслуживание</b> на&nbsp;простых условиях
                         </li>
                     </ul>
 
                     <Button text='Оформить' medium={width < 900} big={width > 900} className={styles.page_content_btn} onClick={onCloseModalAbout} />
-                    <img src={CloseIcon} className={styles.icon} onClick={onCloseModalAbout}/>
+                    <img src={CloseIcon} className={styles.icon} onClick={onCloseModalAbout} />
                 </Modal>
 
 
