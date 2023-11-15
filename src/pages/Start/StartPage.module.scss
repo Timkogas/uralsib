@@ -95,24 +95,29 @@
             position: absolute;
             bottom: 20px;
             font-family: 'Uralsib-Light';
-            font-size: 14px;
+            font-size: min(1.8dvh, 2.1vw, 14px);
+            line-height:min(1.8dvh, 2.1vw, 14px);
             font-weight: 300;
             line-height: 14px;
+            
 
             width: min(1600px, 90%);
 
             color: var(--color-primary-b1);
 
             @include _900_910 {
-                font-size: 12px;
-                line-height: 12px;
+                font-size: min(1.6dvh, 2vw, 12px);
+                line-height:min(1.6dvh, 2vw, 12px);
                 width: 85%;
             }
 
             @include _900 {
                 font-size: min(1.6dvh, 2vw, 12px);
                 line-height:min(1.6dvh, 2vw, 12px);
-                width: 85%;
+                width: 90%;
+                background-color: rgba(0, 0, 0, 0.40);
+                padding: 2%;
+                border-radius: 16px;
             }
         }
     }

@@ -92,7 +92,7 @@ const TestPage = observer(() => {
                 setCoins([])
                 counterRef.current = 0
                 clearAllTimeouts()
-            }, 3000))
+            }, 4500))
         }
     }
 

@@ -67,8 +67,9 @@ const StartPage = () => {
                             :
                             <>
                                 Отгадайте, что изобразила нейросеть и&nbsp;получите
-
-                                до&nbsp;<span className={styles.page_content_text_number}>1</span>&nbsp;000 бонусных рублей на&nbsp;карту «Прибыль».
+                                <br/>
+                                <b>
+                                до&nbsp;<span className={styles.page_content_text_number}>1</span>&nbsp;000 бонусных рублей</b><br/> на&nbsp;карту «Прибыль».
                                 А&nbsp;ещё высокий доход&nbsp;— до&nbsp;13% годовых на&nbsp;остаток*!
                             </>}
                     </p>

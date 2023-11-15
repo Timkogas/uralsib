@@ -114,31 +114,57 @@
     overflow: hidden;
 }
 
+
+
 .coin {
+    will-change: transform;
     position: absolute;
-    animation-name: fall;
+
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-name: fall;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-name: fall;
+    -o-animation-iteration-count: 1;
+    -o-animation-name: fall;
+    -ms-animation-iteration-count: 1;
+    -ms-animation-name: fall;
     animation-iteration-count: 1;
+    animation-name: fall;
+
     z-index: 1000;
+
     @include _900 {
         width: 30px;
     }
 }
 
-@keyframes fall {
 
+@-webkit-keyframes fall{
     0% {}
+    99% {-webkit-transform: translateY(200dvh) rotate(360deg); opacity: 1;}
+    100% {-webkit-transform: translateY(200dvh) rotate(360deg);opacity: 0;display: none;visibility: hidden;overflow: hidden;z-index: -500;}
+}
 
-    99% {
-        transform: translateY(200dvh) rotate(360deg);
-        opacity: 1;
-    }
+@-moz-keyframes fall{
+    0% {}
+    99% {-moz-transform: translateY(200dvh) rotate(360deg); opacity: 1;}
+    100% {-moz-transform: translateY(200dvh) rotate(360deg);opacity: 0;display: none;visibility: hidden;overflow: hidden;z-index: -500;}
+}
 
-    100% {
-        transform: translateY(200dvh) rotate(360deg);
-        opacity: 0;
-        display: none;
-        visibility: hidden;
-        overflow: hidden;
-        z-index: -500;
-    }
+@-o-keyframes fall {
+    0% {}
+    99% {-o-transform: translateY(200dvh) rotate(360deg); opacity: 1;}
+    100% {-o-transform: translateY(200dvh) rotate(360deg);opacity: 0;display: none;visibility: hidden;overflow: hidden;z-index: -500;}
+}
+
+@-ms-keyframes fall {
+    0% {}
+    99% {-ms-transform: translateY(200dvh) rotate(360deg); opacity: 1;}
+    100% {-ms-transform: translateY(200dvh) rotate(360deg);opacity: 0;display: none;visibility: hidden;overflow: hidden;z-index: -500;}
+}
+
+@keyframes fall {
+    0% {}
+    99% {transform: translateY(200dvh) rotate(360deg); opacity: 1;}
+    100% {transform: translateY(200dvh) rotate(360deg);opacity: 0;display: none;visibility: hidden;overflow: hidden;z-index: -500;}
 }
