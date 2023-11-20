@@ -3,12 +3,12 @@
 .checkbox_wrapper {
     display: flex;
     flex-direction: column;
-    gap: min(3vh, 3.6vw, 20px);
+    gap: 1.5em;
 }
 
 .checkbox {
-    width: min(4.5vw, 5.8vh, 50px);
-    height:  min(4.5vw, 5.8vh, 50px);
+    width: 3.5em;
+    height:  3.5em;
     background: linear-gradient(234.18deg, #6F3EC9 6.01%, #AD7CE8 18.2%, #6F3EC9 32%, #6F3EC9 42%, #AD7CE8 58.07%, #AD7CE8 67.18%, #6F3EC9 87.89%);
     background-blend-mode: overlay;
     background: radial-gradient(47.78% 57.78% at 51.11% 57.78%, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 100%);
@@ -16,7 +16,7 @@
     border-radius: 50%;
     z-index: 0;
     position: relative;
-    flex: 0 0 min(4.5vw, 5.8vh, 50px);
+    flex: 0 0 3.5em;
 
     cursor: pointer;
 
@@ -92,7 +92,7 @@
 
     &_item {
         display: flex;
-        gap: 20px;
+        gap: 2em;
         align-items: center;
 
         &_active {
@@ -103,18 +103,25 @@
 
 
 .option {
-    font-size: min(3.6vh, 4.7vw, 28px);
+
     font-family: 'Uralsib-Light';
     font-weight: 400;
-    line-height: min(3.6vh, 4.7vw, 28px);
+
     color: var(--color-primary-b2);
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 0.2em;
     cursor: pointer;
 
-    @include _360 {
-        font-size: min(2.4dvh, 4.0vw, 40px);
-        line-height: min(2.6dvh, 4.0vw, 48px);
+    font-size: 1.9em;
+    line-height: 1em;
+
+    &_number {
+        margin-right: 0.05em;
+    }
+
+    @include _portrait {
+        font-size: 2.35em;
+        line-height: 1.1em;
     }
 }

@@ -7,6 +7,7 @@ interface ModalProps {
   classNameContent?: string
   children?: ReactNode
   isOpen?: boolean
+  white?: boolean
   onClose?: () => void
 }
 
@@ -17,6 +18,7 @@ const Modal: FC<ModalProps> = (props: ModalProps) => {
     children,
     isOpen = false,
     classNameContent,
+    white,
     onClose,
   } = props
 
@@ -52,7 +54,7 @@ const Modal: FC<ModalProps> = (props: ModalProps) => {
     <div className={classNames(styles.Modal, className, { [styles.opened]: isOpen })}>
       <div className={styles.overlay} onClick={closeHandler}>
         <div
-          className={classNames(styles.content, classNameContent)}
+          className={classNames(styles.content, classNameContent, { [styles.white]: white })}
           onClick={onContentClick}
         >
           {children}

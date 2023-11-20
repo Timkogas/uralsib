@@ -21,22 +21,22 @@
 }
 
 .content {
-    padding: min(4dvh, 5vw) min(3dvh, 4vw) min(5dvh, 6vw) min(3dvh, 4vw);
-    border-radius: 12px;
+    padding: 3em 2em 3em 2em;
+    border-radius: 1em;
     background: rgba(105, 105, 105, 0.467);
-    box-shadow: 4px 4px 20px 0px #FFFFFF4D inset;
-    max-width: 851px;
+    box-shadow: 0.05em 0.05em 1.5em 0px #FFFFFF4D inset;
+    max-width: 58em;
     width: 100%;
     margin: 10px;
     position: relative;
-
-    @include _900 {
-        padding: 30px 20px 30px 20px;
-        margin: 8%;
-    }
 }
 
 .opened {
     opacity: 1;
     pointer-events: auto;
+}
+
+.white {
+    background: rgb(255, 255, 255);
+    box-shadow: none;
 }

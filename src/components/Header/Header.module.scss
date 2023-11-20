@@ -8,16 +8,13 @@
         display: flex;
         width: 100%;
         justify-content: space-between;
-        gap: 15px;
+        gap: 1em;
 
-        margin-bottom: 20px;
+        margin-bottom: 1.8em;
 
-        @include _1540 {
-            gap: 10px;
-        }
-
-        @include _900 {
-            gap: 5px;
+        @include _portrait {
+            gap: 0.7em;
+            margin-bottom: 3em;
         }
     }
 
@@ -28,50 +25,48 @@
         align-items: center;
 
         .logo {
-            @include _900 {
-                object-fit: contain;
-                height: min(7vw, 35px);
+            width: 12.5em;
+
+            @include _portrait {
+                width: 3.8em;
             }
         }
 
         &_progress {
-            font-size: 32px;
+            font-size: 2.2em;
             font-weight: 400;
-            line-height: 35px;
 
-            @include _900 {
-                font-size: 18px;
-                line-height: 18px;
+            @include _portrait {
+                font-size: 2.4em;
             }
         }
 
         &_coins {
             display: flex;
             align-items: center;
-            gap: 20px;
-
-            @include _900 {
-                gap: 10px;
+            gap: 2em;
+            & img {
+                height: 3.5em;
+            }
+            @include _portrait {
+                gap: 1.4em;
 
                 & img {
                     object-fit: contain;
-                    height: min(7vw, 30px);
-                    @include _900 {
-                        margin-bottom: 5px;
-                    }
+                    width: 100%;
+                    height: 4em;
+
+                    margin-bottom: 5px;
                 }
             }
 
             &_text {
-                font-size: 32px;
+                font-size: 2.2em;
                 font-weight: 400;
-                margin-top: 10px;
-                line-height: 35px;
+                margin-top: 0.2em;
 
-                @include _900 {
-                    font-size: 16px;
-                    margin-top: 0px;
-                    line-height: 16px;
+                @include _portrait {
+                    font-size: 2.4em;
                 }
             }
         }
@@ -84,9 +79,10 @@
     align-items: center;
 
     .logo {
-        @include _900 {
-            object-fit: contain;
-            width: 140px;
+        width: 12.5em;
+
+        @include _portrait {
+            width: 20em;
         }
     }
 }
@@ -97,8 +93,8 @@
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    padding-top: min(8.5vw, 8.5dvh) !important;
-    margin: 8% !important;
+    padding-top: 5em !important;
+    margin: 5em !important;
 
     & img {
         @include none-select;
@@ -107,32 +103,45 @@
     &_title {
         display: block;
         object-fit: contain;
+        object-position: center;
         width: 90%;
-        height: min(10vw, 10dvh, 74px);;
-        margin-bottom: min(1.8vw, 3.5dvh);
+        height: 5em;
+        margin-bottom: 2.1em;
     }
 
     &_card {
         height: 100%;
-    
-        height: min(25vw, 32dvh, 150px);
+
+        height: 10.5em;
+        width: 100%;
+
         object-fit: contain;
-        margin-bottom: min(1.8vw, 3.5dvh)
+        margin-bottom: 2em;
+        object-position: center;
+
+        @include _530 {
+            height: 15em;
+        }
     }
 
     &_text {
         font-family: 'Uralsib-Regular';
         list-style-type: disc;
 
-        font-size: min(3dvh, 4vw, 24px);
+        font-size: 1.6em;
         font-weight: 400;
-        line-height: min(3dvh, 4vw, 24px);
+        line-height: 1em;
         letter-spacing: 0em;
         text-align: left;
         width: 85%;
 
+        @include _portrait {
+            font-size: 2.35em;
+            line-height: 1.1em;
+        }
+
         &_item {
-            margin-bottom: 12px;
+            margin-bottom: 0.5em;
             list-style: disc outside none;
 
             &::marker {
@@ -140,7 +149,7 @@
             }
 
             &:last-child {
-                margin-bottom: min(2.5vw, 4.5dvh)
+                margin-bottom: 1.5em
             }
         }
 
@@ -151,45 +160,57 @@
 .slide {
     flex: 1;
 
-    max-width: 150px;
     width: 100%;
-    height: 8px;
+    height: 0.55em;
     border-top-left-radius: 5px;
     border-top-right-radius: 35px;
     border-bottom-left-radius: 35px;
     border-bottom-right-radius: 5px;
     border-radius: 5px, 35px, 5px, 35px;
-    border: 3px solid #f3e5ff;
-    box-shadow: 0 0 8px #b506e6, 0 0 8px #b506e6, 0 0 8px #b506e6, 0 0 8px #b506e6, inset 0 0 8px #b506e6, inset 0 0 8px #b506e6;
+    border: 0.22em solid #f3e5ff;
+    box-shadow: 0 0 0.55em #b506e6, 0 0 0.55em #b506e6, 0 0 0.55em #b506e6, 0 0 0.55em #b506e6, inset 0 0 0.55em #b506e6, inset 0 0 0.55em #b506e6;
 
     &_completed {
         background: #f3e5ff;
-        box-shadow: 0 0 8px #b506e6, 0 0 8px #b506e6, 0 0 8px #b506e6, 0 0 8px #b506e6;
+        box-shadow: 0 0 0.55em #b506e6, 0 0 0.55em #b506e6, 0 0 0.55em #b506e6, 0 0 0.55em #b506e6;
     }
 
     &_wrong {
         background: #f3e5ff;
-        box-shadow: 0 0 8px #FF0000, 0 0 8px #FF0000, 0 0 8px #FF0000, 0 0 8px #FF0000;
+        box-shadow: 0 0 0.55em #FF0000, 0 0 0.55em #FF0000, 0 0 0.55em #FF0000, 0 0 0.55em #FF0000;
     }
 
     &_correct {
         background: #f3e5ff;
-        box-shadow: 0 0 8px #3EE423, 0 0 8px #3EE423, 0 0 8px #3EE423, 0 0 8px #3EE423;
+        box-shadow: 0 0 0.55em #3EE423, 0 0 0.55em #3EE423, 0 0 0.55em #3EE423, 0 0 0.55em #3EE423;
+    }
+
+    @include _portrait {
+        height: 8px;
+        border: 3px solid #f3e5ff;
+
+        box-shadow: 0 0 8px #b506e6, 0 0 8px #b506e6, 0 0 8px #b506e6, 0 0 8px #b506e6, inset 0 0 8px #b506e6, inset 0 0 8px #b506e6;
+
+        &_completed {
+            box-shadow: 0 0 8px #b506e6, 0 0 8px #b506e6, 0 0 8px #b506e6, 0 0 8px #b506e6;
+        }
+
+        &_wrong {
+            box-shadow: 0 0 8px #FF0000, 0 0 8px #FF0000, 0 0 8px #FF0000, 0 0 8px #FF0000;
+        }
+
+        &_correct {
+            box-shadow: 0 0 8px #3EE423, 0 0 8px #3EE423, 0 0 8px #3EE423, 0 0 8px #3EE423;
+        }
     }
 
 }
 
 .icon {
     position: absolute;
-    top: 32px;
-    right: 32px;
+    top: 2em;
+    right: 2em;
+    width: 1.5em;
+    height: 1.5em;
     cursor: pointer;
-
-    
-    @include _900 {
-        width: 15px;
-        height: 15px;
-        top: 16px;
-        right: 16px;
-    }
 }

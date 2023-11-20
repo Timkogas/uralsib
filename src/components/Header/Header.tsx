@@ -21,7 +21,7 @@ interface HeaderProps {
 
 const Header = observer(({ isTest }: HeaderProps) => {
     const [modalAbout, setModalAbout] = useState(false)
-    const { width } = useWindowDimensions();
+    const { width, height } = useWindowDimensions();
 
     const onCloseModalAbout = () => {
         setModalAbout(false)
@@ -53,7 +53,7 @@ const Header = observer(({ isTest }: HeaderProps) => {
                     </div>
 
                     <div className={styles.header_test_second}>
-                        <Link to='/'><img src={width < 910 ? logoSmall : logo} alt='logo' className={styles.logo} /></Link>
+                        <Link to='/'><img src={height >= width ? logoSmall : logo} alt='logo' className={styles.logo} /></Link>
                         <p className={styles.header_test_second_progress}> {State.getCurrentQuestion() + 1}/10</p>
                         <div className={styles.header_test_second_coins}>
                             <p className={styles.header_test_second_coins_text}>
@@ -84,7 +84,6 @@ const Header = observer(({ isTest }: HeaderProps) => {
                         </li>
                     </ul>
 
-                    <Button text='Оформить' medium={width < 900} big={width > 900} className={styles.page_content_btn} onClick={onCloseModalAbout} />
                     <img src={CloseIcon} className={styles.icon} onClick={onCloseModalAbout} />
                 </Modal>
 

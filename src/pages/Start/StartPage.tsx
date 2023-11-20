@@ -7,6 +7,7 @@ import Modal from '../../components/UI/Modal/Modal'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import useWindowDimensions from '../../helpers'
+import bird from '../../assets/images/falcon-with-disk.png'
 
 const StartPage = () => {
 
@@ -25,7 +26,7 @@ const StartPage = () => {
 
     return (
         <div className={styles.page_bg}>
-
+          
             <Modal isOpen={modalHow} classNameContent={styles.modal_how} onClose={onCloseModalHow}>
                 <img className={styles.modal_how_title} src={how} />
 
@@ -57,24 +58,22 @@ const StartPage = () => {
                 <div>
                     <h2 className={styles.page_content_subtitle}>Человек или нейросеть&nbsp;&mdash; кто кого?</h2>
                     <p className={styles.page_content_text}>
-                        {width > 900 ?
+                        {width > 530 ?
                             <>
                                 Отгадайте, что изобразила нейросеть и&nbsp;получите<br />
-
-                                до&nbsp;<span className={styles.page_content_text_number}>1</span>&nbsp;000 бонусных рублей на&nbsp;карту «Прибыль».<br />
+                                до&nbsp;<span className={styles.bold}><span className={styles.page_content_text_number}>1</span>&nbsp;000 бонусных рублей</span> на&nbsp;карту «Прибыль».<br />
                                 А&nbsp;ещё высокий доход&nbsp;— до&nbsp;13% годовых на&nbsp;остаток*!<br />
                             </>
                             :
                             <>
                                 Отгадайте, что изобразила нейросеть и&nbsp;получите
                                 <br/>
-                                <b>
-                                до&nbsp;<span className={styles.page_content_text_number}>1</span>&nbsp;000 бонусных рублей</b><br/> на&nbsp;карту «Прибыль».
+                                до&nbsp;<span className={styles.bold}><span className={styles.page_content_text_number}>1</span>&nbsp;000 бонусных рублей</span><br/> на&nbsp;карту «Прибыль».
                                 А&nbsp;ещё высокий доход&nbsp;— до&nbsp;13% годовых на&nbsp;остаток*!
                             </>}
                     </p>
                 </div>
-                <Button text='Играть' big={width < 900} className={styles.page_content_btn} onClick={onOpenModalHow} />
+                <Button text='Играть' big={width < 530} className={styles.page_content_btn} onClick={onOpenModalHow} />
 
 
                 <span className={styles.page_content_disclaimer}>
@@ -98,6 +97,8 @@ const StartPage = () => {
                 </span>
 
             </div>
+
+            <img src={bird} className={styles.page_bg_img}/>
         </div>
     )
 }

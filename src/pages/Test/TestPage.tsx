@@ -131,7 +131,6 @@ const TestPage = observer(() => {
                                 top: '-55vh',
                                 animationDuration: `${coin.dur}s`,
                                 left: `${coin.left}px`,
-                                transform: `scale(${coin.size}) rotate(${coin.deg}deg)`
                             }}
                         />
                     );
