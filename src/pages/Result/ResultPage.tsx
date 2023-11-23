@@ -14,7 +14,7 @@ import result900 from '../../assets/images/result-900.png'
 import result1000 from '../../assets/images/result-1000.png'
 
 import Button from '../../components/UI/Button/Button'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { observer } from 'mobx-react-lite'
 import State from '../../store/State'
 import { useState, useEffect, useMemo } from 'react'
@@ -79,12 +79,15 @@ const ResultPage = observer(() => {
     const onOpenModal= () => {
         setIsOpen(true)
     }
+    const path = useLocation()
+
+    const queryParams = new URLSearchParams(path.search)
 
     return (
         <>
             <Modal isOpen={isOpen} classNameContent={styles.modal_bank} onClose={onCloseModal} white>
                 <iframe
-                    src={`https://www.uralsib.ru/forms/pribyl/?utm_source=${State.getCoins()}`}
+                    src={`https://www.uralsib.ru/forms/pribyl?utm_content=smit_${State.getCoins()}&${queryParams.toString()}`}
                     style={{ border: 'none', overflow: 'auto', width: '100%', height: "80vh" }}
                     className="popup__frame js-final-frame">
                 </iframe>

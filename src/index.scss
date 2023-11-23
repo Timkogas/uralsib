@@ -90,6 +90,9 @@ html {
 
   @include _portrait {
     font-size: min(1.2vh, 1.8vw);
+    @include _750h {
+      font-size: min(0.95vh, 1.6vw);
+    }
   }
 
   @include _landscape {
@@ -132,7 +135,6 @@ a {
 }
 
 #bg-1 {
-  @include _1930 {}
 
   background-image: url('./assets/images/light.png');
   background-size: cover;
