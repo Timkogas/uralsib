@@ -336,6 +336,7 @@ class State {
     private _currentAnswer: number = 0
     private _coins: number = 0
     private _isCorrect: boolean | null = null
+    private _params: string = ''
 
     public startGame() {
         this._currentQuestion = 0
@@ -397,6 +398,14 @@ class State {
 
     public resetIsCorrect(): void {
         this._isCorrect = null
+    }
+
+    public setParams(params: string): void {
+        this._params = params
+    }
+
+    public getParams(): string {
+        return this._params
     }
 }
 

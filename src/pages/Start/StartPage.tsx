@@ -5,9 +5,10 @@ import how from '../../assets/images/modal-how-play.png'
 import Button from '../../components/UI/Button/Button'
 import Modal from '../../components/UI/Modal/Modal'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import useWindowDimensions from '../../helpers'
 import bird from '../../assets/images/falcon-with-disk.png'
+import State from '../../store/State'
 
 const StartPage = () => {
 
@@ -22,8 +23,10 @@ const StartPage = () => {
         setModalHow(true)
     }
 
+    const path = useLocation()
 
-
+    State.setParams(new URLSearchParams(path.search).toString())
+console.log(new URLSearchParams(path.search).toString())
     return (
         <div className={styles.page_bg}>
           
