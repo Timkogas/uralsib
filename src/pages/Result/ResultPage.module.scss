@@ -17,12 +17,15 @@
             z-index: -1;
 
             @include _landscape {
-                max-height: 80%;
-                width: 35%
+                max-height: 85%;
+                width: 80%;
+                @include _1600 {
+                    width: 54%;
+                }
             }
 
             @include _portrait {
-                height: 23em
+                height: 23.5em
             }
         }
     }

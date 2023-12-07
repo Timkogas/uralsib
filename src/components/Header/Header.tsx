@@ -29,6 +29,12 @@ const Header = observer(({ isTest }: HeaderProps) => {
 
     const onOpenModalAbout = () => {
         setModalAbout(true)
+        window.dataLayer.push({
+            event: "gtm.click",
+            eventAction: "dk_left_corner",
+            eventCategory: "step_1",
+            eventLabel: "about_card"
+        });
     }
 
     return (

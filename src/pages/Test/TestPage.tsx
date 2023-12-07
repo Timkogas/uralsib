@@ -77,6 +77,12 @@ const TestPage = observer(() => {
             clearAllTimeouts()
 
         } else {
+            window.dataLayer.push({
+                event: "gtm.click", 
+                eventAction: `question_${State.getCurrentQuestion() + 1}`, 
+                eventCategory: `step_${State.getCurrentQuestion() + 1}`, 
+                eventLabel: "game"
+            });
             State.setIsCorrect()
             addCoin()
             timeoutsRef.current.push(setTimeout(() => {
@@ -92,10 +98,9 @@ const TestPage = observer(() => {
                 setCoins([])
                 counterRef.current = 0
                 clearAllTimeouts()
-            }, 4500))
+            }, State.getIsCorrect() ? 3000 : 1200))
         }
     }
-
     const question = State.getCurrentQuestions()[State.getCurrentQuestion()]
     const nextQuestion = State.getCurrentQuestion() === 9 ? { img: '' } : State.getCurrentQuestions()[State.getCurrentQuestion() + 1]
     const btnText = State.getCurrentQuestion() === 9 && State.getIsCorrect() !== null ? 'К результату' : State.getIsCorrect() !== null ? 'Следующий вопрос' : 'Ответить'

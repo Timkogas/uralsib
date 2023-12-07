@@ -9,6 +9,12 @@
     user-select: none;
 }
 
+@mixin _1600 {
+    @media (max-width: 1600px) {
+        @content;
+    }
+}
+
 @mixin _900 {
     @media (max-width: 900px) {
         @content;

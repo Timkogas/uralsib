@@ -73,7 +73,7 @@
                     font-family: 'Uralsib-Bold';
                     font-size: 2em;
                     font-weight: 700;
-                    line-height: 1em;
+                    line-height: 1.2em;
 
                     // @include _portrait {
                     //     justify-content: flex-start;
@@ -84,12 +84,14 @@
                     // }
 
                     &_btn {
-
                         @include _portrait {
                             width: 100%;
                             & img {
                                 
                                 max-height: 4em !important;
+                            }
+                            @include _530 {
+                                margin-top: 1em;
                             }
                         }
                     }

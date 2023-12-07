@@ -19,11 +19,13 @@ import { observer } from 'mobx-react-lite'
 import State from '../../store/State'
 import { useState, useEffect, useMemo } from 'react'
 import classNames from 'classnames'
-import bird from '../../assets/images/falcon-with-disk.png'
+import bird from '../../assets/images/falcon-end.png'
+import birdMob from '../../assets/images/falcon-end-mob.png'
 import Modal from '../../components/UI/Modal/Modal'
+import useWindowDimensions from '../../helpers'
 
 const ResultPage = observer(() => {
-
+    const { width } = useWindowDimensions();
     const [text, setText] = useState('')
     const [isOpen, setIsOpen] = useState(false)
     const coins = State.getCoins()
@@ -76,15 +78,29 @@ const ResultPage = observer(() => {
         setIsOpen(false)
     }
 
-    const onOpenModal= () => {
+    const onOpenModal = () => {
         setIsOpen(true)
+        window.dataLayer.push({
+            event: "gtm.click", 
+            eventAction: "finel_step", 
+            eventCategory: "send_form_dk", 
+            eventLabel: "i_frame"
+        });
     }
-    console.log(State.getParams())
+
+    const dynamicUtmContent = `smit_${State.getCoins()}`;
+    let updatedParams = State.getParams();
+    if (!updatedParams.includes('utm_content')) {
+
+        updatedParams += `${updatedParams ? '&' : ''}utm_content=${dynamicUtmContent}`;
+    } else {
+        updatedParams = updatedParams.replace(/utm_content=[^&]*/, `utm_content=${dynamicUtmContent}`);
+    }
     return (
         <>
             <Modal isOpen={isOpen} classNameContent={styles.modal_bank} onClose={onCloseModal} white>
                 <iframe
-                    src={`https://www.uralsib.ru/forms/pribyl?utm_content=smit_${State.getCoins()}&${State.getParams()}`}
+                    src={`https://www.uralsib.ru/forms/pribyl?${updatedParams}`}
                     style={{ border: 'none', overflow: 'auto', width: '100%', height: "80vh" }}
                     className="popup__frame js-final-frame">
                 </iframe>
@@ -106,12 +122,19 @@ const ResultPage = observer(() => {
                     </div>
 
                     <div className={styles.page_content_btns} >
-                        <Link to='/test'><Button text='Играть еще' className={styles.page_content_btn} big /></Link>
-                        <Button text='Забрать выигрыш' className={styles.page_content_btn} big onClick={onOpenModal} />
+                        <Link to='/test'><Button text='Играть еще' className={styles.page_content_btn} big onClick={() => {
+                            window.dataLayer.push({
+                                event: "gtm.click", 
+                                eventAction: "restart_game", 
+                                eventCategory: "step_11", 
+                                eventLabel: "new_game"
+                            });
+                        }} /></Link>
+                        <Button text='Забрать выигрыш' className={styles.page_content_btn} big onClick={onOpenModal} green style={{ fontFamily: 'Uralsib-Bold', fontWeight: 700 }} />
                     </div>
 
                 </div>
-                <img src={bird} className={styles.page_bg_img} />
+                <img src={width <= 540 ? birdMob : bird} className={styles.page_bg_img} />
             </div>
         </>
     )
