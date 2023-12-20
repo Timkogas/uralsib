@@ -80,22 +80,28 @@ const ResultPage = observer(() => {
 
     const onOpenModal = () => {
         setIsOpen(true)
-        window.dataLayer.push({
-            event: "gtm.click", 
-            eventAction: "finel_step", 
-            eventCategory: "send_form_dk", 
-            eventLabel: "i_frame"
-        });
+        if (State.getDataValue(14)) {
+            State.setDataValue(14)
+            window.dataLayer.push({
+                event: "gtm.click",
+                eventAction: "finel_step",
+                eventCategory: "send_form_dk",
+                eventLabel: "i_frame"
+            });
+        }
     }
 
     const dynamicUtmContent = `smit_${State.getCoins()}`;
     let updatedParams = State.getParams();
-    if (!updatedParams.includes('utm_content')) {
+    if (!updatedParams.includes('smit')) {
 
-        updatedParams += `${updatedParams ? '&' : ''}utm_content=${dynamicUtmContent}`;
+        updatedParams += `${updatedParams ? '&' : ''}${dynamicUtmContent}`;
     } else {
-        updatedParams = updatedParams.replace(/utm_content=[^&]*/, `utm_content=${dynamicUtmContent}`);
+        updatedParams = updatedParams.replace(/smit_[^&]*/, '');
+        updatedParams = updatedParams.replace(/&$/, '');
+        updatedParams += `${updatedParams ? '&' : ''}${dynamicUtmContent}`;
     }
+
     return (
         <>
             <Modal isOpen={isOpen} classNameContent={styles.modal_bank} onClose={onCloseModal} white>
@@ -123,12 +129,15 @@ const ResultPage = observer(() => {
 
                     <div className={styles.page_content_btns} >
                         <Link to='/test'><Button text='Играть еще' className={styles.page_content_btn} big onClick={() => {
-                            window.dataLayer.push({
-                                event: "gtm.click", 
-                                eventAction: "restart_game", 
-                                eventCategory: "step_11", 
-                                eventLabel: "new_game"
-                            });
+                            if (State.getDataValue(15)) {
+                                window.dataLayer.push({
+                                    event: "gtm.click",
+                                    eventAction: "restart_game",
+                                    eventCategory: "step_11",
+                                    eventLabel: "new_game"
+                                });
+                                State.setDataValue(15)
+                            }
                         }} /></Link>
                         <Button text='Забрать выигрыш' className={styles.page_content_btn} big onClick={onOpenModal} green style={{ fontFamily: 'Uralsib-Bold', fontWeight: 700 }} />
                     </div>

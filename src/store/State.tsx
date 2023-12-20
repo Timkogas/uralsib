@@ -337,6 +337,8 @@ class State {
     private _coins: number = 0
     private _isCorrect: boolean | null = null
     private _params: string = ''
+    private _dataValues: { [key: number]: boolean } =
+        { 1: true, 2: true, 3: true, 4: true, 5: true, 6: true, 7: true, 8: true, 9: true, 10: true, 11: true, 12: true, 13: true, 14: true, 15: true, 16: true, 17: true,}
 
     public startGame() {
         this._currentQuestion = 0
@@ -346,7 +348,7 @@ class State {
         if (this._usedQuestions.length === this._questions.length) {
             this._usedQuestions = []
         }
-        
+
         const unusedQuestions = this._questions.filter(question => !this._usedQuestions.includes(question));
         const randomQuestions = unusedQuestions.sort(() => Math.random() - 0.5).slice(0, 10);
         this._currentQuestions = randomQuestions;
@@ -356,6 +358,14 @@ class State {
         //     this._currentQuestions.push(this._usedQuestions[0]);
         // }
 
+    }
+
+    public setDataValue(number: number) {
+        this._dataValues[number] = false
+    }
+
+    public getDataValue(number: number) {
+        return this._dataValues[number]
     }
 
     public getCurrentQuestions(): IQuestion[] {

@@ -29,12 +29,15 @@ const Header = observer(({ isTest }: HeaderProps) => {
 
     const onOpenModalAbout = () => {
         setModalAbout(true)
-        window.dataLayer.push({
-            event: "gtm.click",
-            eventAction: "dk_left_corner",
-            eventCategory: "step_1",
-            eventLabel: "about_card"
-        });
+        if (State.getDataValue(16)) {
+            State.setDataValue(16) 
+            window.dataLayer.push({
+                event: "gtm.click",
+                eventAction: "dk_left_corner",
+                eventCategory: "step_1",
+                eventLabel: "about_card"
+            });
+        }
     }
 
     return (
@@ -77,7 +80,7 @@ const Header = observer(({ isTest }: HeaderProps) => {
                     <img className={styles.modal_about_card} src={card} />
                     <ul className={styles.modal_about_text}>
                         <li className={styles.modal_about_text_item}>
-                            <b>До&nbsp;13% годовых</b> на&nbsp;остаток для новых клиентов в&nbsp;первые 2&nbsp;месяца
+                            <b>До&nbsp;16% годовых</b> на&nbsp;остаток для новых клиентов в&nbsp;первые 2&nbsp;месяца
                         </li>
                         <li className={styles.modal_about_text_item}>
                             <b>До&nbsp;3% кешбэк</b> на&nbsp;покупки

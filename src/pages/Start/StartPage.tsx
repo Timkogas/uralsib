@@ -21,18 +21,20 @@ const StartPage = () => {
     }
 
     const onOpenModalHow = () => {
-        window.dataLayer.push({
-            event: 'gtm.click',
-            eventAction: 'play',
-            eventCategory: 'star_game'
-        });
+        if (State.getDataValue(12)) {
+            State.setDataValue(12)
+            window.dataLayer.push({
+                event: 'gtm.click',
+                eventAction: 'play',
+                eventCategory: 'star_game',
+
+            });
+        }
         setModalHow(true)
     }
 
     const path = useLocation()
-
     State.setParams(new URLSearchParams(path.search).toString())
-    console.log(new URLSearchParams(path.search).toString())
 
     return (
         <div className={styles.page_bg}>
@@ -53,19 +55,21 @@ const StartPage = () => {
                 </ol>
 
                 <Link to={'/test'} className={styles.modal_how_link} onClick={
-                    () => { 
-                        window.dataLayer.push({
-                            event: 'gtm.click',
-                            eventAction: 'play',
-                            eventCategory: 'rules'
-                        });
+                    () => {
+                        if (State.getDataValue(13)) {
+                            State.setDataValue(13)
+                            window.dataLayer.push({
+                                event: 'gtm.click',
+                                eventAction: 'play',
+                                eventCategory: 'rules'
+                            });
+                        }
                     }}
                 >
                     <Button text='Все ясно' medium={width < 900} big={width > 900} onClick={onCloseModalHow} />
 
                 </Link>
             </Modal>
-
 
 
             <div className={styles.page_content}>
@@ -80,7 +84,7 @@ const StartPage = () => {
                             <>
                                 Отгадайте, что изобразила нейросеть и&nbsp;получите<br />
                                 до&nbsp;<span className={styles.bold}><span className={styles.page_content_text_number}>1</span>&nbsp;000 бонусных рублей</span> на&nbsp;карту «Прибыль».<br />
-                                А&nbsp;ещё высокий доход&nbsp;— до&nbsp;13% годовых на&nbsp;остаток*!<br />
+                                А&nbsp;ещё высокий доход&nbsp;— до&nbsp;16% годовых на&nbsp;остаток*!<br />
                             </>
                             :
                             <>
@@ -92,7 +96,7 @@ const StartPage = () => {
                                 <br />
                                 на&nbsp;карту «Прибыль». А&nbsp;ещё высокий
                                 <br />
-                                доход&nbsp;— до&nbsp;13% годовых
+                                доход&nbsp;— до&nbsp;16% годовых
                                 <br />
                                 на&nbsp;остаток*!
                             </>}
@@ -104,19 +108,19 @@ const StartPage = () => {
                 <span className={styles.page_content_disclaimer}>
                     {width > 900 ?
                         <>
-                            Общий срок проведения акции с&nbsp;1&nbsp;сентября 2023 года по&nbsp;31&nbsp;декабря 2023&nbsp;года. Информация о&nbsp;правилах участия в&nbsp;акции,<br />
-
-                            количестве призов, сроках проведения акции, условиях и&nbsp;тарифах по&nbsp;дебетовой карте &laquo;Прибыль&raquo; размещена на&nbsp;сайте <a href='https://www.uralsib.ru/' target='_blank'>uralsib.ru</a>.<br />
-
-                            Реклама. ПАО &laquo;Банк Уралсиб&raquo;. Генеральная лицензия банка России &#8470;&nbsp;30, выдана 10.09.2015&nbsp;г.<br />
-
-                            *для новых клиентов в&nbsp;первые 2&nbsp;месяца<br />
+                            Акция «Прибыльный нейроквиз» проводится с&nbsp;01.12.2023&nbsp;по&nbsp;30.06.2024 включительно для новых держателей карты «Прибыль». <br/>
+                            Информация о&nbsp;правилах участия в&nbsp;акции, количестве призов, сроках проведения акции <a style={{textDecoration: 'underline', color: 'var(--color-primary-b2)'}} target="_blank" href='https://www.uralsib.ru/api/directory-engine/files/rates/usloviya-aktsii-neyrokviz_52txvmyj.pdf'>по&nbsp;ссылке</a>. Условия и тарифы <br/>
+                            по&nbsp;дебетовой карте «Прибыль» размещены на&nbsp;сайте uralsib.ru. Реклама. ПАО «БАНК УРАЛСИБ». ИНН 0274062111.<br/>
+                            Генеральная лицензия ЦБ РФ № 30 от 10.09.2015 г. 18+ <br/>
+                            *для новых клиентов в&nbsp;первые 2 месяца
                         </>
                         :
                         <>
-                            Общий срок проведения акции с&nbsp;1&nbsp;сентября 2023 года по&nbsp;31&nbsp;декабря 2023&nbsp;года. Информация о&nbsp;правилах участия в&nbsp;акции, количестве призов, сроках проведения акции, условиях и&nbsp;тарифах по&nbsp;дебетовой карте &laquo;Прибыль&raquo; размещена на&nbsp;сайте  <a href='https://www.uralsib.ru/' target='_blank'>uralsib.ru</a>.
-                            Реклама. ПАО &laquo;Банк Уралсиб&raquo;. Генеральная лицензия банка России &#8470;&nbsp;30, выдана 10.09.2015&nbsp;г.
-                            *для новых клиентов в&nbsp;первые 2&nbsp;месяца
+                            Акция «Прибыльный нейроквиз» проводится с&nbsp;01.12.2023&nbsp;по&nbsp;30.06.2024 включительно для новых держателей карты «Прибыль». 
+                            Информация о&nbsp;правилах участия в&nbsp;акции, количестве призов, сроках проведения акции  <a style={{textDecoration: 'underline', color: 'var(--color-primary-b2)'}} target="_blank" href='https://www.uralsib.ru/api/directory-engine/files/rates/usloviya-aktsii-neyrokviz_52txvmyj.pdf'>по&nbsp;ссылке</a>. Условия и тарифы 
+                            по&nbsp;дебетовой карте «Прибыль» размещены на&nbsp;сайте uralsib.ru. Реклама. ПАО «БАНК УРАЛСИБ». ИНН 0274062111.
+                            Генеральная лицензия ЦБ РФ № 30 от 10.09.2015 г. 18+ 
+                            *для новых клиентов в&nbsp;первые 2 месяца
 
                         </>}
                 </span>

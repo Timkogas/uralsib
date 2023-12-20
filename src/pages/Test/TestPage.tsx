@@ -77,12 +77,16 @@ const TestPage = observer(() => {
             clearAllTimeouts()
 
         } else {
-            window.dataLayer.push({
-                event: "gtm.click", 
-                eventAction: `question_${State.getCurrentQuestion() + 1}`, 
-                eventCategory: `step_${State.getCurrentQuestion() + 1}`, 
-                eventLabel: "game"
-            });
+            if (State.getDataValue(State.getCurrentQuestion() + 1)) {
+                State.setDataValue(State.getCurrentQuestion() + 1) 
+                window.dataLayer.push({
+                    event: "gtm.click", 
+                    eventAction: `question_${State.getCurrentQuestion() + 1}`, 
+                    eventCategory: `step_${State.getCurrentQuestion() + 1}`, 
+                    eventLabel: "game"
+                });
+            }
+            
             State.setIsCorrect()
             addCoin()
             timeoutsRef.current.push(setTimeout(() => {
